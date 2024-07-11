@@ -26,7 +26,7 @@ const Todo = ({todo}) => {
     }
 
     return <div style={{display: "flex", gap: "8px", alignItems: "center", justifyContent: "center"}}>
-        <input type="checkbox" onChange={() => toggle_todo(todo.id)} />
+        <input type="checkbox" checked={todo.completed} onChange={() => toggle_todo(todo.id)} />
         <p>
             {
                 isEditable ?  (<input type="text" value={editedInput} onChange={(e) => setEditedInput(e.target.value)} />) : (<h3 style={{textDecoration: `${ todo.completed ? 'line-through' : '' } `}}>{todo.title}</h3>)

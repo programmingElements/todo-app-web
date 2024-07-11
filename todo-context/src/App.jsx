@@ -15,14 +15,22 @@ const reducer = (state, action) => {
           return state.map((todo) => todo.id === action.payload.id ? ({...todo, title: action.payload.editedInput}) : todo);
     case "DELETE_TODO":
           return state.filter((todo) => todo.id !== action.payload);
+    
+    case "RESET_TODO":
+          return init(initialState);
     default :
           return state;
   }
 }
 
+function init(state) {
+  // return [...state, {id: 11111, title: "Reading Books and Watching", completed: true}];
+  return [...state]
+}
+
 function App() {
 
-  const [todos, dispatch] = useReducer(reducer, initialState);
+  const [todos, dispatch] = useReducer(reducer, initialState, init);
 
   const data = {
     todos,
